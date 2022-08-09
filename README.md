@@ -4,7 +4,7 @@ Ansible simply sends a python script to the machine, executes, and returns the o
 Written in YAML, INI or text format with output being in json\
 Inventory - Target machine information (/etc/ansible/hosts) (create one in working dir)\
 Modules - Tasks to do\
-Paybook - Tie inventory to module for target and send (what do you want to do and where)
+Playbook - Tie inventory to module for target and send (what do you want to do and where)
 NOT ideal for Cloud, use TF instead\
 Edit global config file to decline host_key_checking
 ```
