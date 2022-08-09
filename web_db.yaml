@@ -1,0 +1,54 @@
+---
+- name: Setup Web Server
+  hosts: webservergroup
+  become: yes
+  vars:
+    dbname: accounts
+  tasks:
+    - name: Print OS Name
+      debug:
+        var: ansible_distribution
+        #above var is from fact vars
+    - name: Print Processor Name
+      debug:
+        var: ansible_processor[2]
+        #using list specific calls here, from the fact vars
+    - name: Install Apache httpd
+      yum:
+        name: httpd
+        state: present
+    - name: Start and Enable httpd
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+    - name: Deploy Web File
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+
+- name: Setup DB Server
+  hosts: dbservergroup
+  become: yes
+  tasks:
+    - name: Install MySQL server
+      yum:
+        name: mariadb-server
+        state: present
+    - name: Start and Enable mariadb service
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+    - name: Create a new database with name 'accounts'
+      mysql_db:
+        name: "{{dbname}}"
+        state: present
+    -name: Create database user with name 'admin'
+      mysql_user:
+        name: "{{dbuser}}"
+        #these two vars are in group_vars/all to be used by all hosts
+        password: "{{dbpass}}"
+        #this is bad practice to hardcode passwds, use ansible vault instead
+        priv: '*.*:ALL'
+        state: present
