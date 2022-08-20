@@ -1,0 +1,7 @@
+---
+# this playbook utilizes the post-install role
+- name: Provisioning Server
+  hosts: all
+  become: yes
+  roles:
+    - post-install
