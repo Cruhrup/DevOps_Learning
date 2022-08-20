@@ -35,3 +35,15 @@ Variables can be set in playbook using ```vars:``` and calling variables via ```
 - Can store task output into a variable
 - Fact variables are run by default on each host with various parameters being returned, you can grab these vars as well
 
+Loops are amazing at doing multiple things in the specified list and can be returned via "{{item}}" variable (see provision.yml for exmaple)\
+Multiple values can be used in loops in dictionary format shown below:
+```
+Name: "{{item.name}}"
+Groups: "{{item.group}}"
+Loop:
+  - { name: 'bob', groups: 'wheel' }
+```
+Handlers are used to run tasks ONLY when a change is made (i.e only restart service if another task changed) (see provision.yml for example)\
+Roles simplify playbook content by distributing it across directories to be used at an org level (see roles dir and provision_roles.yml)\
+Galaxy.ansible.com has a lot of pre-defined community roles you can use\
+
