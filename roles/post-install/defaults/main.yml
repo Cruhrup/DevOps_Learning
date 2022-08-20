@@ -1,0 +1,10 @@
+# defaults file for post-install
+# put your vars here
+dbuser: admin
+dbpass: admin123
+
+usernames:
+- bob
+- keith
+- alice
+- joe
