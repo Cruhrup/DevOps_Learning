@@ -1,6 +1,6 @@
 # DevOps_Learning
 Learning the CI/CD pipeline and DevOps life via Udemy
-<h4>Branches have been created for each big piece of software in the CI/CD process</h4>
+<h4>Branches have been created for each piece of software in the CI/CD process</h4>
 
 <h3>Software Used Throughout Coursework</h3>
 Git/GitHub - Version control and storing artifacts (when not using Nexus)<br>
